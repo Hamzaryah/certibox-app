@@ -1,0 +1,8 @@
+{
+  "name": "CertiBox",
+  "short_name": "CertiBox",
+  "display": "standalone",
+  "start_url": "./index.html",
+  "theme_color": "#07101d",
+  "background_color": "#f6f7fb"
+}

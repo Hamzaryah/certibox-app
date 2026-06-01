@@ -1,0 +1,29 @@
+
+*{box-sizing:border-box}
+:root{--navy:#07101d;--navy2:#0b1728;--gold:#d9aa45;--gold2:#f4d58d;--bg:#f6f7fb;--text:#111827;--muted:#667085;--line:#e7eaf0;--green:#178a4b;--red:#d63b2f}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+.app{max-width:980px;margin:auto;padding:24px 16px 110px}
+.logoRow{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.logoMark{width:42px;height:42px;border:3px solid var(--gold);border-radius:13px;background:#fff;position:relative}.logoMark:after{content:"";position:absolute;inset:9px;border:3px solid var(--gold);border-radius:6px;transform:rotate(45deg)}
+.brand{font-size:30px;font-weight:900;letter-spacing:-.05em;color:var(--navy)}.brand span{color:var(--gold)}
+.hero{background:linear-gradient(145deg,var(--navy),var(--navy2));color:#fff;border-radius:34px;padding:30px;box-shadow:0 24px 70px rgba(7,16,29,.20)}
+.kicker{display:inline-block;border:1px solid rgba(244,213,141,.38);color:var(--gold2);border-radius:999px;padding:8px 12px;font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+h1{font-size:clamp(38px,8vw,68px);line-height:.92;margin:20px 0 12px;letter-spacing:-.06em}h2{font-size:29px;margin:0 0 14px}
+p{color:var(--muted);line-height:1.55}.hero p{color:#cbd5e1;font-size:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:22px;margin:16px 0;box-shadow:0 18px 55px rgba(15,23,42,.08)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:760px){.grid{grid-template-columns:1fr}}
+button,input,select{width:100%;padding:16px;border-radius:16px;font-size:16px;margin:8px 0}
+input,select{background:#fff;border:1px solid var(--line);color:var(--text)}
+button{border:0;background:linear-gradient(135deg,var(--gold),var(--gold2));font-weight:900;color:#111}button.dark{background:#07101d;color:#fff}button.green{background:var(--green);color:#fff}button.red{background:var(--red);color:#fff}
+.screen{display:none}.screen.active{display:block}
+.contacts{margin-top:26px;padding-top:18px;border-top:1px solid rgba(255,255,255,.20);display:grid;gap:8px;color:#d7dee9;font-size:14px}.contacts b{color:#fff}
+.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:10px;z-index:20}
+.nav button{background:#eef2f7;color:#07101d;margin:0;padding:13px 5px;font-size:13px}.nav button.active{background:linear-gradient(135deg,var(--gold),var(--gold2))}
+.ok{background:#eaf8f0;color:#126538;border:1px solid #bde9cf;padding:15px;border-radius:18px;margin:12px 0}.warn{background:#fff8e7;color:#7a5200;border:1px solid #f4dda0;padding:15px;border-radius:18px;margin:12px 0}.danger{background:#fff0ee;color:#8e1f17;border:1px solid #f0b8b1;padding:15px;border-radius:18px;margin:12px 0}
+.timer{width:132px;height:132px;border-radius:999px;border:10px solid var(--gold);display:grid;place-items:center;margin:18px auto;font-size:34px;font-weight:900;color:#07101d}
+.item{border-top:1px solid var(--line);padding:14px 0}.item:first-child{border-top:0}.code{font-family:monospace;background:#f0f2f6;padding:12px;border-radius:12px;word-break:break-all;color:#111}
+.qrbox{text-align:center}.qr{font-size:42px;font-weight:900;padding:22px;border:8px solid #111;display:inline-block;margin:12px;border-radius:12px}
+.receipt{background:white;color:#111;border-radius:22px;padding:22px;border:1px solid var(--line)}.kv{display:grid;grid-template-columns:135px 1fr;border-top:1px solid #ddd;padding:9px 0}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0;background:#fbfcff}.toggle input{width:auto;transform:scale(1.3)}
+video{width:100%;border-radius:22px;background:#000;margin-top:10px;display:none}.scanBox{border:2px dashed var(--gold);border-radius:22px;padding:20px;text-align:center;margin:10px 0;background:#fffaf0}
+@media print{.nav,.noPrint,.card:not(.printArea){display:none!important}body{background:white}.app{padding:0}}
