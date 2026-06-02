@@ -1,10 +1,62 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CertiBox</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+</head>
+<body>
+<div class="app">
+<section id="home" class="screen active">
+  <div class="logoRow"><div class="logoMark"></div><div class="brand">Certi<span>Box</span></div></div>
+  <div class="hero">
+    <span class="kicker">Deposito autorizzato</span>
+    <h1>Consegne sicure, anche quando non sei presente.</h1>
+    <p>CertiBox consente al corriere di richiedere il deposito e al destinatario di autorizzarlo in tempo reale.</p>
+    <button onclick="startCourier()">Accedi come corriere</button>
+    <button class="dark" onclick="startRecipient()">Accedi come utente / destinatario</button>
+    <div class="contacts"><div><b>Assistenza</b> +39 02 1234 5678</div><div><b>Email</b> support@certibox.app</div><div><b>Sede operativa</b> Milano · Bergamo</div></div>
+  </div>
+</section>
 
-<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CertiBox</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"></head><body><div class="app">
-<section id="home" class="screen active"><div class="logoRow"><div class="logoMark"></div><div class="brand">Certi<span>Box</span></div></div><div class="hero"><span class="kicker">Deposito autorizzato</span><h1>Consegne sicure, anche quando non sei presente.</h1><p>CertiBox consente al corriere di richiedere il deposito e al destinatario di autorizzarlo in tempo reale.</p><button onclick="startCourier()">Accedi come corriere</button><button class="dark" onclick="startRecipient()">Accedi come utente / destinatario</button><div class="contacts"><div><b>Assistenza</b> +39 02 1234 5678</div><div><b>Email</b> support@certibox.app</div><div><b>Sede operativa</b> Milano · Bergamo</div></div></div></section>
-<section id="courierLogin" class="screen"><div class="logoRow"><div class="logoMark"></div><div class="brand">Certi<span>Box</span> Courier</div></div><div class="card"><h2>Login corriere</h2><input id="courierCodeLogin" placeholder="Codice operatore"><input id="courierPassLogin" type="password" placeholder="Password"><label class="toggle">Memorizza credenziali <input id="rememberCourier" type="checkbox" checked></label><button onclick="loginCourier()">Accedi</button><div id="courierLoginOut"></div></div></section>
-<section id="courierArea" class="screen"><div class="logoRow"><div class="logoMark"></div><div class="brand">Certi<span>Box</span> Courier</div></div><div class="hero"><span class="kicker">Area corriere</span><h1>Scansiona QR e richiedi deposito.</h1><p>Apri la camera, leggi il QR della box e invia la richiesta al destinatario.</p></div><div class="card"><h2>Scansione QR</h2><button onclick="openCamera()">Scansiona QR</button><video id="cameraPreview" playsinline></video><div class="scanBox"><button class="dark" onclick="useDemoQR()">Usa QR demo</button><div id="scanOut"></div></div><input id="courierBox" placeholder="ID Box scansionata"><input id="courierCode" placeholder="Codice operatore"><input id="tracking" placeholder="Tracking / avviso"><select id="deliveryType"><option>Pacco</option><option>Raccomandata</option><option>Atto / comunicazione</option><option>Altro</option></select><button onclick="sendRequest()">Invia richiesta</button><div id="courierOut"></div></div></section>
-<section id="recipientLogin" class="screen"><div class="logoRow"><div class="logoMark"></div><div class="brand">Certi<span>Box</span> Home</div></div><div class="grid"><div class="card"><h2>Accesso destinatario</h2><input id="recipientBox" placeholder="ID Box"><input id="recipientPin" type="password" placeholder="PIN"><button onclick="loginRecipient()">Entra</button><div id="recipientLoginOut"></div></div><div class="card"><h2>Attiva box</h2><input id="boxId" placeholder="ID Box es. BOX-0001"><input id="ownerName" placeholder="Nome destinatario"><input id="boxPin" placeholder="PIN"><button onclick="saveBox()">Attiva</button><div id="newBoxOut"></div></div></div></section>
+<section id="courierLogin" class="screen">
+  <div class="logoRow"><div class="logoMark"></div><div class="brand">Certi<span>Box</span> Courier</div></div>
+  <div class="card"><h2>Login corriere</h2>
+    <input id="courierCodeLogin" placeholder="Codice operatore">
+    <input id="courierPassLogin" type="password" placeholder="Password">
+    <label class="toggle">Memorizza credenziali <input id="rememberCourier" type="checkbox" checked></label>
+    <button onclick="loginCourier()">Accedi</button><div id="courierLoginOut"></div>
+  </div>
+</section>
+
+<section id="courierArea" class="screen">
+  <div class="logoRow"><div class="logoMark"></div><div class="brand">Certi<span>Box</span> Courier</div></div>
+  <div class="hero"><span class="kicker">Area corriere</span><h1>Scansiona QR e richiedi deposito.</h1><p>Apri la camera, leggi il QR della box e invia la richiesta al destinatario.</p></div>
+  <div class="card"><h2>Scansione QR</h2>
+    <button onclick="openCamera()">Scansiona QR</button>
+    <div id="qr-reader" style="width:100%;display:none;border-radius:22px;overflow:hidden;background:#000;margin-top:12px"></div>
+    <div class="scanBox"><button class="dark" onclick="useDemoQR()">Usa QR demo</button><div id="scanOut"></div></div>
+    <input id="courierBox" placeholder="ID Box scansionata">
+    <input id="courierCode" placeholder="Codice operatore">
+    <input id="tracking" placeholder="Tracking / avviso">
+    <select id="deliveryType"><option>Pacco</option><option>Raccomandata</option><option>Atto / comunicazione</option><option>Altro</option></select>
+    <button onclick="sendRequest()">Invia richiesta</button><div id="courierOut"></div>
+  </div>
+</section>
+
+<section id="recipientLogin" class="screen">
+  <div class="logoRow"><div class="logoMark"></div><div class="brand">Certi<span>Box</span> Home</div></div>
+  <div class="grid"><div class="card"><h2>Accesso destinatario</h2><input id="recipientBox" placeholder="ID Box"><input id="recipientPin" type="password" placeholder="PIN"><button onclick="loginRecipient()">Entra</button><div id="recipientLoginOut"></div></div>
+  <div class="card"><h2>Attiva box</h2><input id="boxId" placeholder="ID Box es. BOX-0001"><input id="ownerName" placeholder="Nome destinatario"><input id="boxPin" placeholder="PIN"><button onclick="saveBox()">Attiva</button><div id="newBoxOut"></div></div></div>
+</section>
+
 <section id="recipientArea" class="screen"><div class="logoRow"><div class="logoMark"></div><div class="brand">Certi<span>Box</span> Home</div></div><div id="recipientPanel"></div><div class="card" id="recipientHistoryCard"><h2>Ultime attività</h2><div id="recipientHistory"></div></div></section>
 <section id="settings" class="screen"><div class="logoRow"><div class="logoMark"></div><div class="brand">Certi<span>Box</span> Settings</div></div><div class="card"><h2>Impostazioni</h2><p>Gestisci notifiche, autorizzazioni, corrieri fidati e blocchi.</p><button onclick="loadSettingsFromSession()">Carica impostazioni box</button><div id="settingsOut"></div></div></section>
-<section id="receipt" class="screen"><div class="card printArea"><h2>Ricevuta CertiBox</h2><div id="receiptOut"></div><button class="noPrint" onclick="window.print()">Scarica / stampa PDF</button></div></section></div>
-<div class="nav noPrint"><button id="n-home" class="active" onclick="show('home')">Home</button><button id="n-courier" onclick="startCourier()">Corriere</button><button id="n-recipient" onclick="startRecipient()">Utente</button><button id="n-settings" onclick="show('settings')">Impost.</button></div><script src="app.js"></script></body></html>
+<section id="receipt" class="screen"><div class="card printArea"><h2>Ricevuta CertiBox</h2><div id="receiptOut"></div><button class="noPrint" onclick="window.print()">Scarica / stampa PDF</button></div></section>
+</div>
+<div class="nav noPrint"><button id="n-home" class="active" onclick="show('home')">Home</button><button id="n-courier" onclick="startCourier()">Corriere</button><button id="n-recipient" onclick="startRecipient()">Utente</button><button id="n-settings" onclick="show('settings')">Impost.</button></div>
+<script src="app.js"></script>
+</body></html>
